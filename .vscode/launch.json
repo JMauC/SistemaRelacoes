@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Menu",
+            "request": "launch",
+            "mainClass": "sistema.Menu",
+            "projectName": "SistemaRelacoes"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Gui",
+            "request": "launch",
+            "mainClass": "sistema.Gui",
+            "projectName": "SistemaRelacoes"
+        }
+    ]
+}

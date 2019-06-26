@@ -1,28 +1,17 @@
 package sistema;
 
+import java.io.File;
+
 public class Analisador {
     Relacao[] relacoes;
 
     //Construtor do analisador
-    public Analisador(int numeroRelacoes) {
-        if (numeroRelacoes == 0){
-            numeroRelacoes = new Relacao[10];
-        }
-        numeroRelacoes = new Relacao[numeroRelacoes]; //Inicia o programa com o número de relações informad
+    public Analisador(File[] arquivos) {
+        relacoes = new Relacao[arquivos.length]; //Define um array de relações com tamanho igual ao número de arquivos
         
-             
-        }
-   
-        //FAZ UM LOOP PELAS LINHAS DO ARRAY
-    public static void outputArray(int[][] array)
-    {
-        //FAZ UM LOOP PELAS COLUNAS DA LINHA ATUAL
-        for(int linha = 0; linha < array.length; linha++)
-        {
-            //FAZ LOOP PELAS COLUNAS DA LINHA ATUAL
-            for( int coluna = 0; coluna < array[linha].length; coluna++)
-                System.out.printf("%d ", array[linha][coluna]);     
-            System.out.println();
+        for (int i = 0; i < arquivos.length; i++) { //Para cada arquivo, cria uma relação no array
+            relacoes[i] = new Relacao(arquivos[i]);
         }
     }
+    
 }

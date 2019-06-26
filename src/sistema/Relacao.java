@@ -10,6 +10,16 @@ public class Relacao {
     int tamanhoDominio; // Define o número de linhas/colunas da matriz de relações
     int numeroDeRelacoes; // Define o número de linhas puladas antes de finalizar a execução do construtor
     boolean[][] matrizParesOrdenados; // Representa cada par ordenado da relação
+    boolean reflexiva;
+    boolean irreflexiva;
+    boolean simetrica;
+    boolean antissimetrica;
+    boolean transitiva;
+    boolean funcional;
+    boolean total;
+    boolean injetora;
+    boolean sobrejetora;
+    
 
     // Construtor do analisador
     public Relacao(File arquivo){

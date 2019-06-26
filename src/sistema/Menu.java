@@ -17,8 +17,20 @@ public class Menu {
 		}
 
 		// Inicializa o Analisador com base nos arquivos que são escolhidos
-		
+		Analisador analisador = new Analisador(arquivos);
 
+		System.out.print("reflexiva:"+ analisador.relacoes[0].reflexiva + "\n");
+		System.out.print("irreflexiva:"+ analisador.relacoes[0].irreflexiva + "\n");
+		System.out.print("simetrica:"+ analisador.relacoes[0].simetrica + "\n");
+		System.out.print("antissimetrica:"+ analisador.relacoes[0].antissimetrica + "\n");
+		System.out.print("transitiva:"+ analisador.relacoes[0].transitiva + "\n");
+		/*for (int i = 0; i < analisador.relacoes[0].tamanhoDominio; i++) {
+			for (int j = 0; j < analisador.relacoes[0].tamanhoDominio; j++) {
+				
+			}
+			System.out.print("\n");
+		}
+		*/
 		// System.out.println(arquivos.length); //Teste
 		
 	
@@ -46,4 +58,15 @@ public class Menu {
 
 		return arquivos;
 	}
+	
+	/*public void name() {
+		
+		String texto = "Os elementos são: {"
+		for (int i = 0; i < ; i++) {
+			
+		}
+		
+		JOptionPane.showMessageDialog(null, ("Os elementos do domínio são: {" + ));
+	}
+	*/
 }

@@ -53,10 +53,10 @@ public class Menu {
 		int contador = 0; 
 
 		//Mostra o Tipo da Relação
-		texto = "O tipo da relacao e: " + relacao.tipo + "\n";
+		texto = "O tipo da relação é: " + relacao.tipo + "\n";
 
 		//Mostra os elementos do domínio
-		texto = texto + "Os elementos do dominio sao: {";
+		texto = texto + "Os elementos do domínio são: {";
 		for (int i = 0; i < relacao.tamanhoDominio; i++) {
 			texto = texto + i;
 			contador++;
@@ -86,11 +86,11 @@ public class Menu {
 			}
 		}
 		//Mostra as propriedades da relação
-		texto = texto +	"reflexiva:"+ ((relacao.reflexiva) ? " sim":" nao") + "\n" +
-		"irreflexiva:"+ ((relacao.irreflexiva) ? " sim":" nao") + "\n" +
-		"simetrica:"+ ((relacao.simetrica) ? " sim":" nao") + "\n" +
-		"antissimetrica:"+ ((relacao.antissimetrica) ? " sim":" nao") + "\n" + 
-		"transitiva:"+ ((relacao.transitiva) ? " sim":" nao") + "\n";
+		texto = texto +	"Reflexiva:"+ ((relacao.reflexiva) ? " sim":" não") + "\n" +
+		"Irreflexiva:"+ ((relacao.irreflexiva) ? " sim":" não") + "\n" +
+		"Simetrica:"+ ((relacao.simetrica) ? " sim":" não") + "\n" +
+		"Antissimetrica:"+ ((relacao.antissimetrica) ? " sim":" não") + "\n" + 
+		"Transitiva:"+ ((relacao.transitiva) ? " sim":" não") + "\n";
 
 		JOptionPane.showMessageDialog(null, texto, "Propriedades da Relação", JOptionPane.INFORMATION_MESSAGE, null);
 		//JOptionPane.showConfirmDialog(null, texto, "Propriedades da relação", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE); //Exibe um diálogo informando o erro e as opções disponíveis (OK ou Cancelar)

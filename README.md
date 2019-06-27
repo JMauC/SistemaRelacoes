@@ -1,6 +1,6 @@
 # SistemaRelacoes
 
-##Funcionamento
+## Funcionamento
 Esse programa recebe um ou mais arquivos ".txt" que sigam o padrão:
 ```
 inteiro (número de elementos do domínio)
@@ -15,7 +15,8 @@ inteiro inteiro (ultimo par ordenado)
 Onde :
 1. Os inteiros são algarismos, não escritos por extenso.
 2. Os parenteses e seu conteúdo não existem.
-###Exemplo: 
+
+### Exemplo: 
 ```
 6
 5
@@ -26,4 +27,5 @@ Onde :
 4 4
 ```
 
-
+## Como executar
+Para executar, basta baixar e executar o arquivo "Programa.jar"

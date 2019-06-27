@@ -19,11 +19,6 @@ public class Menu {
 		// Inicializa o Analisador com base nos arquivos que são escolhidos
 		Analisador analisador = new Analisador(arquivos);
 
-		System.out.print("reflexiva:"+ analisador.relacoes[0].reflexiva + "\n");
-		System.out.print("irreflexiva:"+ analisador.relacoes[0].irreflexiva + "\n");
-		System.out.print("simetrica:"+ analisador.relacoes[0].simetrica + "\n");
-		System.out.print("antissimetrica:"+ analisador.relacoes[0].antissimetrica + "\n");
-		System.out.print("transitiva:"+ analisador.relacoes[0].transitiva + "\n");
 		/*for (int i = 0; i < analisador.relacoes[0].tamanhoDominio; i++) {
 			for (int j = 0; j < analisador.relacoes[0].tamanhoDominio; j++) {
 				
@@ -33,7 +28,30 @@ public class Menu {
 		*/
 		// System.out.println(arquivos.length); //Teste
 		
-	
+		/*
+		//teste da função de exibir info
+		String texto = "Os elementos do domínio são: {";
+		//for (int i = 0; i < relacao.tamanhoDominio; i++) {
+		for (int i = 0; i < relacao.tamanhoDominio; i++) {
+			texto = texto + i + ", ";
+		}
+		texto = texto + "}\n";
+		texto = texto + "R = {" ;
+		for (int i = 0; i < relacao.tamanhoDominio; i++) {
+			for (int j = 0; j < relacao.tamanhoDominio; j++) {
+				if (relacao.matrizParesOrdenados[i][j]) {
+					
+				}
+			}
+			
+			
+			texto = texto + i + ", ";
+		}
+
+
+
+		JOptionPane.showMessageDialog(null, texto);*/
+		mostraInfo(analisador.relacoes[0]);
 	}
 
 	private static File[] selecionaArquivos() {
@@ -59,14 +77,49 @@ public class Menu {
 		return arquivos;
 	}
 	
-	/*public void name() {
-		
-		String texto = "Os elementos são: {"
-		for (int i = 0; i < ; i++) {
-			
+	public	static void mostraInfo(Relacao relacao) {
+		String texto;
+		int contador = 0; 
+
+		//Mostra os elementos do domínio	
+		texto = "Os elementos do dominio sao: {";
+		for (int i = 0; i < relacao.tamanhoDominio; i++) {
+			texto = texto + i;
+			contador++;
+			if(relacao.tamanhoDominio == contador){
+				texto = texto + "}\n";
+				contador = 0;
+			} else{
+				texto = texto + ", ";
+			}
 		}
 		
-		JOptionPane.showMessageDialog(null, ("Os elementos do domínio são: {" + ));
+		//Mostra os pares da relação
+		texto = texto + "R = {" ;
+		for (int i = 0; i < relacao.tamanhoDominio; i++) {
+			for (int j = 0; j < relacao.tamanhoDominio; j++) {
+				if (relacao.matrizParesOrdenados[i][j] == true) {
+					texto = texto + "(" + i + "," + j + ")";
+					contador++;
+					
+					if(relacao.numeroDeRelacoes == contador){
+						texto = texto + "}\n";
+						contador = 0;
+					} else{
+						texto = texto + " , ";
+					}
+				}
+			}
+		}
+		//Mostra as propriedades da relação
+		texto = texto +	"reflexiva:"+ relacao.reflexiva + "\n" +
+		"irreflexiva:"+ relacao.irreflexiva + "\n" +
+		"simetrica:"+ relacao.simetrica + "\n" +
+		"antissimetrica:"+ relacao.antissimetrica+ "\n" +
+		"transitiva:"+ relacao.transitiva + "\n";
+
+
+		JOptionPane.showMessageDialog(null, texto);
 	}
-	*/
+	
 }

@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Relacao {
+    String tipo;
     int tamanhoDominio; // Define o número de linhas/colunas da matriz de relações
     int numeroDeRelacoes; // Define o número de linhas puladas antes de finalizar a execução do construtor
     boolean[][] matrizParesOrdenados; // Representa cada par ordenado da relação

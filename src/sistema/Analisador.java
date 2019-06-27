@@ -22,6 +22,14 @@ public class Analisador {
                 checaSimetrica(relacao);
                 checaAntissimetrica(relacao);
                 checaTransitiva(relacao);
+                
+                checaFuncional(relacao);
+                checaInjetora(relacao);
+                checaTotal(relacao);
+                checaSobrejetora(relacao);
+                checaTipo(relacao);
+                //Acho que alguns ifs concatenados, um pra cada possibilidade de tipo. Escreve o tipo na String tipo do objeto
+                
 			}
 		}
     }
@@ -90,6 +98,97 @@ public class Analisador {
         relacao.antissimetrica = true; // Se não foi interrompido ao checar todos, então é transitiva
     }
     
+    private void checaFuncional(Relacao relacao) {
+        int contador = 0;
+        for (int i = 0; i < relacao.tamanhoDominio; i++) { // Confere se cada elemento x faz somente uma relação com o codomínio
+            for (int j = 0; j < relacao.tamanhoDominio; j++) {
+                if (relacao.matrizParesOrdenados[i][j] == true) {
+                    contador++;
+                }   
+            }
+            
+            if(contador > 1){
+                relacao.funcional = false;
+                return;
+            }
+            contador = 0;
+        }
+        relacao.funcional = true;
+    }
+    
+    private void checaInjetora(Relacao relacao) {
+        int contador = 0;
+        for (int j = 0; j < relacao.tamanhoDominio; j++) { // Confere se cada elemento y faz somente uma relação com o domínio
+            for (int i = 0; i < relacao.tamanhoDominio; i++) {
+                if (relacao.matrizParesOrdenados[i][j] == true) {
+                    contador++;
+                }   
+            }
+            
+            if(contador > 1){
+                relacao.injetora = false;
+                return;
+            }
+            contador = 0;
+        }
+        relacao.injetora = true;
+    }
+
+    private void checaTotal(Relacao relacao) {
+        int contador = 0;
+        for (int i = 0; i < relacao.tamanhoDominio; i++) { // Confere se todo elemento x faz ao menos uma relação com o codomínio
+            for (int j = 0; j < relacao.tamanhoDominio; j++) {
+                if (relacao.matrizParesOrdenados[i][j] == true) {
+                    contador++;
+                }   
+            }
+            
+            if(contador < 1){
+                relacao.total = false;
+                return;
+            }
+            contador = 0;
+        }
+        relacao.total = true;
+    }
+
+    private void checaSobrejetora(Relacao relacao) {
+        int contador = 0; 
+        for (int j = 0; j < relacao.tamanhoDominio; j++) { // Confere se todo elemento y faz ao menos uma relação com o domínio
+            for (int i = 0; i < relacao.tamanhoDominio; i++) {
+                if (relacao.matrizParesOrdenados[i][j] == true) {
+                    contador++;
+                }   
+            }
+            
+            if(contador < 1){
+                relacao.sobrejetora = false;
+                return;
+            }
+            contador = 0;
+        }
+        relacao.sobrejetora = true;
+    }
+
+    private void checaTipo(Relacao relacao) {
+        if (relacao.total && relacao.injetora) {
+            relacao.tipo = "Monomorfismo";
+        } else if(relacao.funcional && relacao.sobrejetora) {
+            relacao.tipo = "Epimorfismo";
+        } else if(relacao.injetora && relacao.sobrejetora) {
+            relacao.tipo = "Bijetora";
+        } else if(relacao.total && relacao.funcional && relacao.injetora && relacao.sobrejetora) {
+            relacao.tipo = "Isomorfismo";
+        } else if(relacao.injetora) {
+            relacao.tipo = "Injetora";
+        } else if(relacao.sobrejetora) {
+            relacao.tipo = "Sobrejetora";
+        } else if(relacao.total) {
+            relacao.tipo = "Total";
+        } else if(relacao.funcional) {
+            relacao.tipo = "Funcional";
+        }
+    }
 }
         
         

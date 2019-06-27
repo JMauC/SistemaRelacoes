@@ -18,40 +18,11 @@ public class Menu {
 
 		// Inicializa o Analisador com base nos arquivos que são escolhidos
 		Analisador analisador = new Analisador(arquivos);
-
-		/*for (int i = 0; i < analisador.relacoes[0].tamanhoDominio; i++) {
-			for (int j = 0; j < analisador.relacoes[0].tamanhoDominio; j++) {
-				
-			}
-			System.out.print("\n");
-		}
-		*/
-		// System.out.println(arquivos.length); //Teste
-		
-		/*
-		//teste da função de exibir info
-		String texto = "Os elementos do domínio são: {";
-		//for (int i = 0; i < relacao.tamanhoDominio; i++) {
-		for (int i = 0; i < relacao.tamanhoDominio; i++) {
-			texto = texto + i + ", ";
-		}
-		texto = texto + "}\n";
-		texto = texto + "R = {" ;
-		for (int i = 0; i < relacao.tamanhoDominio; i++) {
-			for (int j = 0; j < relacao.tamanhoDominio; j++) {
-				if (relacao.matrizParesOrdenados[i][j]) {
-					
-				}
-			}
-			
-			
-			texto = texto + i + ", ";
+		//Mostra as informações relativas à cada relação recebida
+		for (int i = 0; i < analisador.relacoes.length; i++) {
+			mostraInfo(analisador.relacoes[i]);
 		}
 
-
-
-		JOptionPane.showMessageDialog(null, texto);*/
-		mostraInfo(analisador.relacoes[0]);
 	}
 
 	private static File[] selecionaArquivos() {
@@ -81,8 +52,11 @@ public class Menu {
 		String texto;
 		int contador = 0; 
 
-		//Mostra os elementos do domínio	
-		texto = "Os elementos do dominio sao: {";
+		//Mostra o Tipo da Relação
+		texto = "O tipo da relacao e: " + relacao.tipo + "\n";
+
+		//Mostra os elementos do domínio
+		texto = texto + "Os elementos do dominio sao: {";
 		for (int i = 0; i < relacao.tamanhoDominio; i++) {
 			texto = texto + i;
 			contador++;
@@ -103,7 +77,7 @@ public class Menu {
 					contador++;
 					
 					if(relacao.numeroDeRelacoes == contador){
-						texto = texto + "}\n";
+						texto = texto + "}\n\n";
 						contador = 0;
 					} else{
 						texto = texto + " , ";
@@ -112,14 +86,14 @@ public class Menu {
 			}
 		}
 		//Mostra as propriedades da relação
-		texto = texto +	"reflexiva:"+ relacao.reflexiva + "\n" +
-		"irreflexiva:"+ relacao.irreflexiva + "\n" +
-		"simetrica:"+ relacao.simetrica + "\n" +
-		"antissimetrica:"+ relacao.antissimetrica+ "\n" +
-		"transitiva:"+ relacao.transitiva + "\n";
+		texto = texto +	"reflexiva:"+ ((relacao.reflexiva) ? " sim":" nao") + "\n" +
+		"irreflexiva:"+ ((relacao.irreflexiva) ? " sim":" nao") + "\n" +
+		"simetrica:"+ ((relacao.simetrica) ? " sim":" nao") + "\n" +
+		"antissimetrica:"+ ((relacao.antissimetrica) ? " sim":" nao") + "\n" + 
+		"transitiva:"+ ((relacao.transitiva) ? " sim":" nao") + "\n";
 
-
-		JOptionPane.showMessageDialog(null, texto);
+		JOptionPane.showMessageDialog(null, texto, "Propriedades da Relação", JOptionPane.INFORMATION_MESSAGE, null);
+		//JOptionPane.showConfirmDialog(null, texto, "Propriedades da relação", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE); //Exibe um diálogo informando o erro e as opções disponíveis (OK ou Cancelar)
 	}
 	
 }
